@@ -1,118 +1,129 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import { Dimensions, Image, Pressable, StatusBar, StyleSheet, Text, View } from 'react-native'
+import React from 'react'
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import {  NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { useNavigation } from '@react-navigation/native';
 
-import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+//imports
+import Home from './screens/Home';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
+//exports
+export const StatusBarHeight = StatusBar.currentHeight
+export const {height,width} = Dimensions.get('window')
 
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+const Stack = createNativeStackNavigator<RootStackParamList>();
+
+export type RootStackParamList = {
+  OnBoarding: undefined;
+  Home: undefined;
+};
+
+export default function App() {
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
+    <>
+    <StatusBar backgroundColor={"#f1f1f1"} barStyle={'dark-content'}/>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName='OnBoarding'>
+        <Stack.Screen name="Home" component={Home} options={{headerShown: false}}/>
+        <Stack.Screen name="OnBoarding" component={OnBoarding} options={{headerShown: false}}/>
+
+      </Stack.Navigator>
+    </NavigationContainer>
+    </>
+  )
 }
 
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
+const OnBoarding = () => {
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>()
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
+    <>
+    <StatusBar backgroundColor={"#CF3737"} barStyle={'light-content'}/>
+
+    <View style={styles.wrapper}>
+
+        <View style={styles.header}>
+      <Text style={styles.headerText}>APNA BUS</Text>
         </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
+
+
+        <View style={styles.IcoText}>
+            <View style={{justifyContent: 'center',alignItems: 'center'}}>
+            <View style={styles.imageHandler}>
+                <Image source={require("./assets/images/parvahan.png")} style={styles.image}/>
+            </View>
+            <View style={styles.TextHandler}>
+                <Text style={styles.descText}>Automated Bus Scheduling and Route Managment System for Delhi Transport Communication</Text>
+                </View>
+            </View>
+        </View>
+
+
+        <View style={styles.button}>
+            <Pressable onPress={()=>navigation.navigate('Home')}>
+
+            <View style={styles.buttonHandler}>
+                <Text style={styles.buttonMain}>Get Started</Text>
+            </View>
+            </Pressable>
+        </View>
+    </View>
+    </>
+  )
 }
 
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
-
-export default App;
+const styles = StyleSheet.create({wrapper:{
+  flex:1,
+  backgroundColor: '#CF3737',
+},
+header:{
+  flex:1,
+  flexGrow:1.5,
+},
+IcoText: {
+  flex:2,
+  justifyContent: 'center',
+  alignItems: 'center',
+},
+button: {
+  flex:1,
+  flexGrow:2,
+  justifyContent: 'flex-end',
+  marginBottom: 10
+},
+headerText:{
+  textAlign: 'center',
+  color: '#fff',
+  fontFamily: 'GothamMedium',
+  margin: height/30
+},
+imageHandler:{
+  justifyContent: 'center',
+  alignItems:'center'
+},
+image:{
+  height: 150,
+  width:150
+},
+descText:{
+  fontFamily: 'GothamBook',
+  color: '#fff',
+  textAlign: 'center'
+},
+TextHandler:{
+  marginHorizontal:12
+},
+buttonMain:{
+  color: '#cf3737',
+  fontFamily: 'GothamBold'
+},
+buttonHandler:{
+  backgroundColor: '#fff',
+  height: height/15,
+  marginHorizontal :12,
+  justifyContent: 'center',
+  alignItems: 'center',
+  borderRadius: 7,
+}})
