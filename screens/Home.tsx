@@ -50,7 +50,7 @@ const Home = ():JSX.Element => {
       <View style={{marginTop: 10,flexDirection: 'row',justifyContent: 'space-between',alignItems: 'center'}}>
         <View>
         <Text style={{fontFamily: 'GothamBold',color: '#fff',marginLeft:10,marginTop: 10,fontSize:12}}>Todays Task</Text>
-        <Text style={{fontFamily: 'GothamBold',color: '#fff',marginLeft:10,fontSize: 20}}>You Have 3 Shifts Today</Text>
+        <Text style={{fontFamily: 'GothamBold',color: '#fff',marginLeft:10,fontSize: 20}}>You Have 2 Shifts Today</Text>
         </View>
         <View style={{justifyContent: 'center',alignItems: 'center'}}>
         <Image source={require('../assets/images/arrow.png')} style={{marginHorizontal: 16}}/>
@@ -69,8 +69,10 @@ const Home = ():JSX.Element => {
         <Image source={require('../assets/images/loc.png')}/>
       <Text style={{color: '#000',fontFamily: 'GothamBold',marginTop:4,textAlignVertical: 'center',marginHorizontal:3}}>SECTOR 18</Text>
       </View>
-      <View >
+      <View>
+        <View >
       <Image source={require('../assets/images/locBlack.png')} style={{marginHorizontal: 12}}/>
+        </View>
       </View>
         
 
@@ -90,7 +92,7 @@ const Home = ():JSX.Element => {
       <Text style={{color: '#000',fontFamily: 'GothamBold',marginTop:4,textAlignVertical: 'center',margin:5}}>Next Bus in 1 Hr</Text>
       </View>
       <View style={{justifyContent: 'center', alignItems: 'center'}}>
-      <Image source={require('../assets/images/locBlack.png')} style={{margin: 12}}/>
+      <Image source={require('../assets/images/locBlack.png')} style={{marginRight: 12,marginBottom:6}}/>
       </View>
         
       </View>
@@ -100,7 +102,7 @@ const Home = ():JSX.Element => {
 
     <View style={styles.card2}>
       <View>
-      <Text style={{color: '#000',fontFamily: 'GothamBook',paddingTop: 15,paddingLeft: 10}}>Bus 01</Text>
+      <Text style={{color: '#000',fontFamily: 'GothamBook',paddingTop: 15,paddingLeft: 10}}>Bus 02</Text>
       <Text style={styles.journey}>Noida to Shalimaar Bagh</Text>
       <Text style={{color: '#000',fontFamily: 'GothamBook',marginTop:4,paddingLeft: 10}}>01:00PM to 03:00PM </Text>
       </View>
@@ -118,6 +120,28 @@ const Home = ():JSX.Element => {
 
 
 
+    </View>
+    <View style={styles.navbarwrapper}>
+    <View style={styles.NavBar}>
+      
+      <View >
+        <View style={[styles.activeIcon,{backgroundColor: '#fff'}]}>
+        <Image source={require("../assets/images/home.png")}/>
+        </View>
+      </View>
+      <View>
+        <View style={styles.activeIcon}>
+      <Image source={require("../assets/images/location.png")}/>
+      </View>
+        
+      </View>
+      <View style={styles.activeIcon}>
+      <View>
+      <Image source={require("../assets/images/user.png")}/>
+        
+      </View>
+      </View>
+    </View>
     </View>
     </View>
   )
@@ -194,7 +218,27 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between'
   },
   NavBar:{
-    
+    height: height/13,
+    width: width/2,
+    backgroundColor: '#CF3737',
+    borderRadius: 100,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
+
+  },
+  activeIcon:{
+    height: height/15,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: height/13,
+    borderRadius: 100
+  },
+  navbarwrapper:{
+    position: 'absolute',
+    left: '50%',
+    bottom:10,
+    transform: [{ translateX: -width/4 }]
   }
 
 })
