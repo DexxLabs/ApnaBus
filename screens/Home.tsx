@@ -1,15 +1,14 @@
-import { Button, Image, Pressable, ScrollView, StatusBar, StyleSheet, Text, View } from 'react-native'
+import { Button, Image, Pressable, ScrollView, StatusBar, StyleSheet, Text, View ,Dimensions} from 'react-native'
 import React from 'react'
-import { height, RootStackParamList, width } from '../App'
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator, NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { useNavigation } from '@react-navigation/native';
 import OnBoarding from './OnBoarding';
+import { RootStackParamList } from '../App'
 
+const {height,width} = Dimensions.get('window')
 
+import type { NativeStackScreenProps } from '@react-navigation/native-stack';
+type HomeProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
-const Home = ():JSX.Element => {
-  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>()
+const Home = ({navigation}:HomeProps) => {
 
   return (
     <View style={{flex:1,backgroundColor: '#fff'}}>
