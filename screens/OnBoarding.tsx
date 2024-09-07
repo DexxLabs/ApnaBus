@@ -1,15 +1,13 @@
-import { StyleSheet, Text, View,StatusBar, Image, Pressable } from 'react-native'
+import { StyleSheet, Text, View,StatusBar, Image, Pressable,Dimensions } from 'react-native'
 import React from 'react'
 import { RootStackParamList } from '../App'
-
-import { createNativeStackNavigator, NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { useNavigation } from '@react-navigation/native';
-import { StatusBarHeight } from '../App'
-import { height,width } from '../App'
+import type { NativeStackScreenProps } from '@react-navigation/native-stack';
+const {height,width} = Dimensions.get('window')
 
 
-const OnBoarding = () => {
-  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>()
+type Props = NativeStackScreenProps<RootStackParamList, 'OnBoarding'>;
+
+const OnBoarding = ({navigation}: Props) => {
 
   return (
     <>

@@ -6,11 +6,12 @@ import {  NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/native';
 
 //imports
-
+import Home from './screens/Home';
+import OnBoarding from './screens/OnBoarding';
 
 //exports
 export const StatusBarHeight = StatusBar.currentHeight
-export const {height,width} = Dimensions.get('window')
+const {height,width} = Dimensions.get('window')
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -34,183 +35,8 @@ export default function App() {
   )
 }
 
-const OnBoarding = () => {
-  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>()
-
-  return (
-    <>
-    <StatusBar backgroundColor={"#CF3737"} barStyle={'light-content'}/>
-
-    <View style={styles.wrapper}>
-
-        <View style={styles.header}>
-      <Text style={styles.headerText}>APNA BUS</Text>
-        </View>
 
 
-        <View style={styles.IcoText}>
-            <View style={{justifyContent: 'center',alignItems: 'center'}}>
-            <View style={styles.imageHandler}>
-                <Image source={require("./assets/images/parvahan.png")} style={styles.image}/>
-            </View>
-            <View style={styles.TextHandler}>
-                <Text style={styles.descText}>Automated Bus Scheduling and Route Managment System for Delhi Transport Communication</Text>
-                </View>
-            </View>
-        </View>
-
-
-        <View style={styles.button}>
-            <Pressable onPress={()=>navigation.navigate('Home')}>
-
-            <View style={styles.buttonHandler}>
-                <Text style={styles.buttonMain}>Get Started</Text>
-            </View>
-            </Pressable>
-        </View>
-    </View>
-    </>
-  )
-}
-
-const Home = ():JSX.Element => {
-  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>()
-
-  return (
-    <View style={{flex:1,backgroundColor: '#fff'}}>
-    <StatusBar backgroundColor={'#fff'}/>
-    <View style={styles2.wrapper}>
-      <View style={styles2.headerContainer}>
-        <View>
-        <Text style={styles2.headerText}>Hello User</Text>
-        <Text style={styles2.headerText}>Welcome Back</Text>
-        </View>
-
-        <View>
-          <Image style={styles2.imageHandler} source={require('./assets/images/profile.png')}/>
-        </View>
-      </View>
-
-
-      <ScrollView style={{marginTop: 6,marginLeft: 12}} showsHorizontalScrollIndicator={false} horizontal={true} >
-      <View style={{flexDirection:'row'}}>
-        <Text style={[styles2.DateButtons]}>Today</Text>
-        <Text style={styles2.DateButtons}>6 Sep</Text>
-        <Text style={styles2.DateButtons}>7 Sep</Text>
-        <Text style={styles2.DateButtons}>8 Sep</Text>
-        <Text style={styles2.DateButtons}>9 Sep</Text>
-        <Text style={styles2.DateButtons}>5 Sep</Text>
-        </View>  
-      </ScrollView>
-
-      <View style={styles2.card}>
-        <View>
-          <Text style={styles2.cardText}>5 Sep</Text>
-        </View>
-        <View style={{flexDirection: 'row',marginLeft: 10,marginTop: 9}}>
-          <Image source={require('./assets/images/moon.png')} style={{height:13,width:13}}/>
-          <Text style={{fontFamily: 'GothamBold',color: '#fff',marginLeft: 4}}>Rainy</Text>
-        </View>
-
-      <View style={{marginTop: 10,flexDirection: 'row',justifyContent: 'space-between',alignItems: 'center'}}>
-        <View>
-        <Text style={{fontFamily: 'GothamBold',color: '#fff',marginLeft:10,marginTop: 10,fontSize:12}}>Todays Task</Text>
-        <Text style={{fontFamily: 'GothamBold',color: '#fff',marginLeft:10,fontSize: 20}}>You Have 2 Shifts Today</Text>
-        </View>
-        <View style={{justifyContent: 'center',alignItems: 'center'}}>
-        <Image source={require('./assets/images/arrow.png')} style={{marginHorizontal: 16}}/>
-        </View>
-      </View>
-      </View>
-
-    <View style={styles2.card2}>
-      <View>
-      <Text style={{color: '#000',fontFamily: 'GothamBook',paddingTop: 15,paddingLeft: 10}}>Bus 01</Text>
-      <Text style={styles2.journey}>Dwarka to Noida</Text>
-      <Text style={{color: '#000',fontFamily: 'GothamBook',marginTop:4,paddingLeft: 10}}>07:00AM to 01:00PM </Text>
-      </View>
-      <View style={{justifyContent: 'space-between',flexDirection: 'row'}}>
-      <View style={{marginHorizontal: 10,flexDirection: 'row',alignItems: 'center',paddingBottom: 20}}>
-        <Image source={require('./assets/images/loc.png')}/>
-      <Text style={{color: '#000',fontFamily: 'GothamBold',marginTop:4,textAlignVertical: 'center',marginHorizontal:3}}>SECTOR 18</Text>
-      </View>
-      <View>
-        <View >
-      <Image source={require('./assets/images/locBlack.png')} style={{marginHorizontal: 12}}/>
-        </View>
-      </View>
-        
-
-        
-      </View>
-    </View>
-
-
-    <View style={styles2.card3}>
-      <View>
-      <Text style={{color: '#000',fontFamily: 'GothamBook',paddingTop: 15,paddingLeft: 10}}>Break 01</Text>
-      <Text style={styles2.journey}>Noida Bus Depot</Text>
-      </View>
-      <View style={{justifyContent: 'space-between',flexDirection: 'row'}}>
-      <View style={{marginHorizontal: 10,flexDirection: 'row',alignItems: 'center',paddingBottom: 10}}>
-        <Image source={require('./assets/images/Vector.png')}/>
-      <Text style={{color: '#000',fontFamily: 'GothamBold',marginTop:4,textAlignVertical: 'center',margin:5}}>Next Bus in 1 Hr</Text>
-      </View>
-      <View style={{justifyContent: 'center', alignItems: 'center'}}>
-      <Image source={require('./assets/images/locBlack.png')} style={{marginRight: 12,marginBottom:6}}/>
-      </View>
-        
-      </View>
-    </View>
-
-
-
-    <View style={styles2.card2}>
-      <View>
-      <Text style={{color: '#000',fontFamily: 'GothamBook',paddingTop: 15,paddingLeft: 10}}>Bus 02</Text>
-      <Text style={styles2.journey}>Noida to Shalimaar Bagh</Text>
-      <Text style={{color: '#000',fontFamily: 'GothamBook',marginTop:4,paddingLeft: 10}}>01:00PM to 03:00PM </Text>
-      </View>
-      <View style={{justifyContent: 'space-between',flexDirection: 'row'}}>
-      <View style={{marginHorizontal: 10,flexDirection: 'row',alignItems: 'center',paddingBottom: 20}}>
-        <Image source={require('./assets/images/loc.png')}/>
-      <Text style={{color: '#000',fontFamily: 'GothamBold',marginTop:4,textAlignVertical: 'center',marginHorizontal:3}}>Shalimaar Bus Station</Text>
-      </View>
-      <View >
-      <Image source={require('./assets/images/locBlack.png')} style={{marginHorizontal: 12}}/>
-      </View>
-        
-      </View>
-    </View>
-
-
-
-    </View>
-    <View style={styles2.navbarwrapper}>
-    <View style={styles2.NavBar}>
-      
-      <View >
-        <View style={[styles2.activeIcon,{backgroundColor: '#fff'}]}>
-        <Image source={require("./assets/images/home.png")}/>
-        </View>
-      </View>
-      <View>
-        <View style={styles2.activeIcon}>
-      <Image source={require("./assets/images/location.png")}/>
-      </View>
-        
-      </View>
-      <View style={styles2.activeIcon}>
-      <View>
-      <Image source={require("./assets/images/user.png")}/>
-        
-      </View>
-      </View>
-    </View>
-    </View>
-    </View>
-  )
-}
 
 
 const styles = StyleSheet.create({wrapper:{
