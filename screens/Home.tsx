@@ -2,16 +2,20 @@ import { Button, Image, Pressable, ScrollView, StatusBar, StyleSheet, Text, View
 import React from 'react'
 import OnBoarding from './OnBoarding';
 import { RootStackParamList } from '../App'
+import Card1 from '../src/card1';
+import Card2 from '../src/Card2';
+import MainCard from '../src/MainCard';
+
 
 const {height,width} = Dimensions.get('window')
-
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 type HomeProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
 const Home = ({navigation}:HomeProps) => {
 
   return (
-    <View style={{flex:1,backgroundColor: '#fff'}}>
+    <>
+    <ScrollView style={{flex:1,backgroundColor: '#fff'}}>
     <StatusBar backgroundColor={'#fff'}/>
     <View style={styles.wrapper}>
       <View style={styles.headerContainer}>
@@ -37,89 +41,23 @@ const Home = ({navigation}:HomeProps) => {
         </View>  
       </ScrollView>
 
-      <View style={styles.card}>
-        <View>
-          <Text style={styles.cardText}>5 Sep</Text>
-        </View>
-        <View style={{flexDirection: 'row',marginLeft: 10,marginTop: 9}}>
-          <Image source={require('../assets/images/moon.png')} style={{height:13,width:13}}/>
-          <Text style={{fontFamily: 'GothamBold',color: '#fff',marginLeft: 4}}>Rainy</Text>
-        </View>
-
-      <View style={{marginTop: 10,flexDirection: 'row',justifyContent: 'space-between',alignItems: 'center'}}>
-        <View>
-        <Text style={{fontFamily: 'GothamBold',color: '#fff',marginLeft:10,marginTop: 10,fontSize:12}}>Todays Task</Text>
-        <Text style={{fontFamily: 'GothamBold',color: '#fff',marginLeft:10,fontSize: 20}}>You Have 2 Shifts Today</Text>
-        </View>
-        <View style={{justifyContent: 'center',alignItems: 'center'}}>
-        <Image source={require('../assets/images/arrow.png')} style={{marginHorizontal: 16}}/>
-        </View>
-      </View>
-      </View>
-
-    <View style={styles.card2}>
-      <View>
-      <Text style={{color: '#000',fontFamily: 'GothamBook',paddingTop: 15,paddingLeft: 10}}>Bus 01</Text>
-      <Text style={styles.journey}>Dwarka to Noida</Text>
-      <Text style={{color: '#000',fontFamily: 'GothamBook',marginTop:4,paddingLeft: 10}}>07:00AM to 01:00PM </Text>
-      </View>
-      <View style={{justifyContent: 'space-between',flexDirection: 'row'}}>
-      <View style={{marginHorizontal: 10,flexDirection: 'row',alignItems: 'center',paddingBottom: 20}}>
-        <Image source={require('../assets/images/loc.png')}/>
-      <Text style={{color: '#000',fontFamily: 'GothamBold',marginTop:4,textAlignVertical: 'center',marginHorizontal:3}}>SECTOR 18</Text>
-      </View>
-      <View>
-        <View >
-      <Image source={require('../assets/images/locBlack.png')} style={{marginHorizontal: 12}}/>
-        </View>
-      </View>
-        
-
-        
-      </View>
-    </View>
 
 
-    <View style={styles.card3}>
-      <View>
-      <Text style={{color: '#000',fontFamily: 'GothamBook',paddingTop: 15,paddingLeft: 10}}>Break 01</Text>
-      <Text style={styles.journey}>Noida Bus Depot</Text>
-      </View>
-      <View style={{justifyContent: 'space-between',flexDirection: 'row'}}>
-      <View style={{marginHorizontal: 10,flexDirection: 'row',alignItems: 'center',paddingBottom: 10}}>
-        <Image source={require('../assets/images/Vector.png')}/>
-      <Text style={{color: '#000',fontFamily: 'GothamBold',marginTop:4,textAlignVertical: 'center',margin:5}}>Next Bus in 1 Hr</Text>
-      </View>
-      <View style={{justifyContent: 'center', alignItems: 'center'}}>
-      <Image source={require('../assets/images/locBlack.png')} style={{marginRight: 12,marginBottom:6}}/>
-      </View>
-        
-      </View>
-    </View>
+      <MainCard taskRemaining={2} date='6 Sep' weather='RAINY' />
+
+      <Card1 source='Dwarka' destination='Noida' departure='7:00AM' arrival='1:00PM' busNo={1} location='SECTOR 18'/>
+    
+
+      <Card2 destination='Noida Bus Depot' breakNO={1} arrivalMessage='Next Bus in 1 Hr' />
 
 
+       <Card1 source='Noida' destination='Shalimaar Bagh' arrival='4:00PM' departure='2:00PM' busNo={2} location='Shalimaar Bus Station'/>
 
-    <View style={styles.card2}>
-      <View>
-      <Text style={{color: '#000',fontFamily: 'GothamBook',paddingTop: 15,paddingLeft: 10}}>Bus 02</Text>
-      <Text style={styles.journey}>Noida to Shalimaar Bagh</Text>
-      <Text style={{color: '#000',fontFamily: 'GothamBook',marginTop:4,paddingLeft: 10}}>01:00PM to 03:00PM </Text>
-      </View>
-      <View style={{justifyContent: 'space-between',flexDirection: 'row'}}>
-      <View style={{marginHorizontal: 10,flexDirection: 'row',alignItems: 'center',paddingBottom: 20}}>
-        <Image source={require('../assets/images/loc.png')}/>
-      <Text style={{color: '#000',fontFamily: 'GothamBold',marginTop:4,textAlignVertical: 'center',marginHorizontal:3}}>Shalimaar Bus Station</Text>
-      </View>
-      <View >
-      <Image source={require('../assets/images/locBlack.png')} style={{marginHorizontal: 12}}/>
-      </View>
-        
-      </View>
-    </View>
 
 
 
     </View>
+    </ScrollView>
     <View style={styles.navbarwrapper}>
     <View style={styles.NavBar}>
       
@@ -142,7 +80,7 @@ const Home = ({navigation}:HomeProps) => {
       </View>
     </View>
     </View>
-    </View>
+    </>
   )
 }
 
