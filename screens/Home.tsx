@@ -7,6 +7,7 @@ import Card2 from '../src/Card2';
 import MainCard from '../src/MainCard';
 
 
+
 const {height,width} = Dimensions.get('window')
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 type HomeProps = NativeStackScreenProps<RootStackParamList, 'Home'>;

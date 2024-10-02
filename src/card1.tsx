@@ -16,7 +16,7 @@ const card1 = (prop:CardProps) => {
   return (
     <View style={styles.card2}>
     <View>
-    <Text style={{color: '#000',fontFamily: 'GothamBook',paddingTop: 15,paddingLeft: 10}}>Bus 01</Text>
+    <Text style={{color: '#000',fontFamily: 'GothamBook',paddingTop: 15,paddingLeft: 10}}>Bus 0{prop.busNo}</Text>
     <Text style={styles.journey}>{prop.source} to {prop.destination}</Text>
     <Text style={{color: '#000',fontFamily: 'GothamBook',marginTop:4,paddingLeft: 10}}>{prop.departure} to {prop.arrival} </Text>
     </View>

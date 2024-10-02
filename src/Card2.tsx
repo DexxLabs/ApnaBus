@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View,Image, Dimensions } from 'react-native'
 import React from 'react'
+import Config from "react-native-config";
 
 const {height,width} = Dimensions.get('window')
 
@@ -12,7 +13,7 @@ const Card2 = (prop : BreakProp) => {
   return (
     <View style={styles.card3}>
       <View>
-      <Text style={{color: '#000',fontFamily: 'GothamBook',paddingTop: 15,paddingLeft: 10}}>Break {prop.breakNO}</Text>
+      <Text style={{color: '#000',fontFamily: 'GothamBook',paddingTop: 15,paddingLeft: 10}}>Break 0{prop.breakNO}</Text>
       <Text style={styles.journey}>{prop.destination}</Text>
       </View>
       <View style={{justifyContent: 'space-between',flexDirection: 'row'}}>
